@@ -35,7 +35,11 @@ public class ParseAdapter extends RecyclerView.Adapter<ParseAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ParseItem parseItem = parseItems.get(position);
         holder.textView.setText((parseItem.getTitle()));
-        Picasso.get().load(parseItem.getImageUrl()).into(holder.imageView);
+        if(parseItem.getImageUrl() == ""){
+            Picasso.get().load("https://demofree.sirv.com/nope-not-here.jpg").into(holder.imageView);
+        }else {
+            Picasso.get().load(parseItem.getImageUrl()).into(holder.imageView);
+        }
     }
 
     @Override
